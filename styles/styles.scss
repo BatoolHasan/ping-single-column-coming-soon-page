@@ -194,9 +194,9 @@ $font-weight-bold: 700;
                     @include TransitionAll(.3s); 
                     @include BorderRadius(40px);
                 }
-                & a:visited, a:link{
-                    text-decoration: none;
-                }
+                // & a:visited, a:link{
+                //     text-decoration: none;
+                // }
             }
         }
     }

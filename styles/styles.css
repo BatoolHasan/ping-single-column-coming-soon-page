@@ -262,10 +262,6 @@ p, h1, h2, h3 {
   -o-border-radius: 40px;
 }
 
-.container__top .form .button a:visited, .container__top .form .button a:link {
-  text-decoration: none;
-}
-
 .container__middle {
   display: -webkit-box;
   display: -ms-flexbox;
