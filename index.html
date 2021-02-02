@@ -25,10 +25,11 @@
       <div class="form">
         <form>
           <div class="container__input">
-            <input type="email" required name="email" id="email" placeholder="Your email address..." />
+            <input type="email" required name="email" id="email" placeholder="Your email address..."
+              aria-label="email input" />
             <label id="error">I am an error</label>
           </div>
-          <div class="button" tabindex="0" role="button" id="button"><a>Notify Me</a></div>
+          <button class="button" type="submit" id="button"><a>Notify Me</a></button>
         </form>
       </div>
     </div>
@@ -37,9 +38,12 @@
     </div>
     <footer class="container__bottom">
       <div class="icons">
-        <a href="https://www.facebook.com" class="icon"><span class="icon-facebook"></span></a>
-        <a href="https://www.twitter.com" class="icon"><span class="icon-twitter"></span></a>
-        <a href="https://www.instagram.com" class="icon"><span class="icon-instagram"></span></a>
+        <a href="https://www.facebook.com" class="icon" title="Facebook" aria-label="Facebook"><span
+            class="icon-facebook"></span></a>
+        <a href="https://www.twitter.com" class="icon" title="Twitter" aria-label="Twitter"><span
+            class="icon-twitter"></span></a>
+        <a href="https://www.instagram.com" class="icon" title="Instagram" aria-label="Instagram"><span
+            class="icon-instagram"></span></a>
       </div>
       <p>&copy; Copyright Ping. All rights reserved.</p>
       <p class="attribution">

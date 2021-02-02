@@ -188,6 +188,7 @@ p, h1, h2, h3 {
 }
 
 .container__top .form .button {
+  border: none;
   background-color: #4f7df3;
   padding: 1em 3.5em;
   -ms-flex-item-align: start;

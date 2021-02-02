@@ -143,6 +143,7 @@ $font-weight-bold: 700;
                 }
             }
             & .button{
+                border: none;
                 background-color: $Blue;
                 padding: 1em 3.5em;
                 align-self: flex-start;
