@@ -1,30 +1,48 @@
 //COLORS
 //Primary
-$Red: hsl(0, 100%, 74%);
-$Green: hsl(154, 59%, 51%);
-//Accent
-$Blue: hsl(248, 32%, 49%);
+$Blue: hsl(223, 87%, 63%);
+//Secondary
+$Pale-Blue: hsl(223, 100%, 88%);
+$Light-Red: hsl(354, 100%, 66%);
 //Neutral
-$Dark-Blue: rgb(62, 60, 73);
-$Grayish-Blue: hsl(246, 25%, 77%);
+$Gray: hsl(0, 0%, 59%);
+$Light-Gray: hsla(0, 0%, 59%, 0.315);
+$Very-Dark-Blue: hsl(209, 33%, 12%);
 
 //FONT
-$font-family: 'Poppins', sans-serif;
-$weight-Regular:400;
-$weight-Medium:500;
-$weight-Semi-Bold:600;
-$weight-Bold:700;
-$font-size:1rem;
+$font-size: 1.25rem;
+$font-family: 'Libre Franklin', sans-serif;
+$font-weight-light: 300;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
 
-
-//mixins
-@mixin FlexCenter{
-  display: flex;;
-  // align-items: center;
-  justify-content: center;
+//MIXINS
+@mixin FlexCenterCol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
-
-//RESETS
+@mixin FlexCenterRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin BorderRadius($val){
+    border-radius: $val;
+    -webkit-border-radius: $val;
+    -moz-border-radius: $val;
+    -ms-border-radius: $val;
+    -o-border-radius: $val;
+}
+@mixin TransitionAll($val){
+    transition: all $val;
+    -webkit-transition: all $val;
+    -moz-transition: all $val;
+    -ms-transition: all $val;
+    -o-transition: all $val;
+}
+//RESETS AND DEFAULTS
 
 *{
     box-sizing: border-box;
@@ -35,274 +53,275 @@ $font-size:1rem;
     height: 100%;
   }
   body{
-    background: url('../images/bg-intro-desktop.png'), $Red;
-    height: max-content;
+    background: #fff;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
   }
   body, input, button, select, textarea{
      font-family: $font-family;
      font-size: $font-size;
-     color:#fff;
+     color:$Very-Dark-Blue;
   }
-
-  .container__input img.visible, .container__input label.visible{
-    display: unset;
-  }
-
-  .attribution {
-    font-size: 12px;
-    text-align: center;
-    width: 100%;
-    padding-top: 0.1em;
-    padding-bottom: 0.1em;
-    color:rgb(62, 60, 73);
-    background-color: #fff;
-}
-  
-/////////////////////////////////////
-.container{
-  padding: 7vh 10vw;
-  display:grid;
-  grid-template-columns: 50% auto;
-  grid-column-gap: 4em;
-  grid-template-rows: 90vh;
-
-
-  &__text{
-    display:flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    grid-column: 1/span 1;
-    grid-row: 1/span 1;
-    & h1{
-      margin: 0;
-      font-size: 3rem;
-      font-weight: $weight-Bold;
-    }
-    & p{
-      font-weight: $weight-Regular;
-    }
-  }
-
-  &__input{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 1em;
-    & img{
-      position: absolute;
-      right: 1.5em;
-      top: 20%;
-      display:none;
-    }
-    & label{
-      text-align: end;
-      color: $Red;
-      font-size: 0.7rem;
-      font-style: italic;
-      font-weight: $weight-Medium;
-      display:none;
-    }
-  }
-
-  &__form{
-    grid-column: 2/span 1;
-    grid-row: 1/span 1;
-    display: flex;;
-    justify-content: center;
-    flex-direction: column;
-    & form{
-      display: flex;
-      flex-direction: column;
-      background-color: #fff;
-      padding: 2em 2em;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      -o-border-radius: 10px;
-
-      -webkit-box-shadow: 0px 7px 0px  rgba(62,60,73,0.25);
-      -moz-box-shadow: 0px 7px 0px  rgba(62,60,73,0.25);
-      box-shadow: 0px 7px 0px  rgba(62,60,73,0.25);
-
-      & input{
-        margin-bottom: 0.5em;
-        border: 0.1rem solid $Grayish-Blue;
-        padding: 1em 2em;
-        padding-right: 3.5em;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-        font-weight: $weight-Bold;
-        font-size: 0.9rem;
-        color:$Dark-Blue;
-        caret-color: $Blue;
-        
-        &:focus{
-          border: 0.1rem solid $Dark-Blue;
-          outline: none;
-        }
-        &:hover{
-          border: 0.1rem solid $Dark-Blue;
-          
-        }
-        &::placeholder{
-          font-weight: $weight-Bold;
-          
-        }
-        &.wrongInput{
-          border: 0.1rem solid $Red;
-        }
-      }
-
-      & button{
-        padding: 0.8em 2em;
-        background-color: $Green;
-        color:#fff;
-        border:none;
-        font-size: 1rem;
-        cursor: pointer;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-        -webkit-box-shadow: 0px 7px 0px  #30bb7f;
-        -moz-box-shadow: 0px 7px 0px #30bb7f;
-        box-shadow: 0px 7px 0px  #30bb7f;
-        margin-bottom: 1em;
-        text-transform: uppercase;
-        font-weight: $weight-Regular;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        word-spacing: 2px;
-        transition: all 0.5s linear forwards;
-        -webkit-transition: all 0.5s linear forwards;
-        -moz-transition: all 0.5s linear forwards;
-        -ms-transition: all 0.5s linear forwards;
-        -o-transition: all 0.5s linear forwards;
-
-        &:focus{
-          outline: 2px dotted $Blue;
-
-        }
-        &:hover{
-          transform: translateY(-3px);
-          -webkit-transform: translateY(-3px);
-          -moz-transform: translateY(-3px);
-          -ms-transform: translateY(-3px);
-          -o-transform: translateY(-3px);
-        }
-        &:active{
-          transform: translateY(3px);
-          -webkit-transform: translateY(3px);
-          -moz-transform: translateY(3px);
-          -ms-transform: translateY(3px);
-          -o-transform: translateY(3px);
-        }
-      }
-      & label.submitButtonLabel{
-        color:$Grayish-Blue;
-        font-size: 0.6rem;
-        text-align: center;
-        & a{
-          color:$Red;
-          font-weight: $weight-Bold;   
-          text-decoration: none;     
-        }
-      }
-    }
-
-    & .form__details{
+  p, h1, h2, h3 {
       margin:0;
-      text-align: center;
-      padding: 1em 2em;
-      font-size: 1rem;
-      font-weight: $weight-Semi-Bold;
-      background-color: $Blue;
-      margin-bottom: 1.5em;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      -ms-border-radius: 10px;
-      -o-border-radius: 10px;
-      -webkit-box-shadow: 0px 7px 0px  rgba(62,60,73,0.3);
-      -moz-box-shadow: 0px 7px 0px  rgba(62,60,73,0.3);
-      box-shadow: 0px 7px 0px  rgba(62,60,73,0.3);
-
-      & span{
-        font-weight: 300;
-      }
-
-    }
   }
+
+  
+//////////////////////////////////////
+.container{
+    height: auto;
+    margin: 3em;
+    @include FlexCenterCol;
+    &__top{
+        @include FlexCenterCol;
+        width: 100%;
+        & .logo{
+            margin-bottom: 2em;
+        }
+        & .headings{
+            & h1{
+                font-weight: $font-weight-bold;
+                margin-bottom: 1rem;
+                font-size: 3rem;
+                & span{
+                    font-weight: $font-weight-light;
+                    opacity: 0.6;
+                }
+            }
+            & p{
+                margin-bottom: 2.5rem;
+                text-align: center;
+               font-weight: 500;
+            }
+        }
+        & .form{
+            width: 100%;
+            & .container__input{
+                width: 50%;
+                @include FlexCenterCol;
+                & label{
+                    align-self: flex-start;
+                    margin-left: 1.5em;
+                    margin-top: .5em;
+                    font-size: 0.9em;
+                    color:$Light-Red;
+                    font-style: italic;
+                    // display: none;
+                    @include TransitionAll(.5s);
+                    height: 0;
+                    opacity: 0;
+                    transform-origin: top;
+
+                    &.invalid{
+                        height: 100%;
+                        opacity: 1;
+                        // display: block;
+                    }
+                }
+            }
+            & form{
+                @include FlexCenterRow;
+                width: 100%;
+            }
+            & input{
+                padding: 1em 1.5em;
+                margin-right: 1em;
+                width: 100%;
+                border: 1px solid $Pale-Blue;
+                @include BorderRadius(40px);
+                &::placeholder{
+                    color: $Pale-Blue;
+                }
+                &:focus{
+                    outline: 2px dotted $Very-Dark-Blue;
+                }
+                &.invalid{
+                    border: 1px solid $Light-Red;
+                }
+            }
+            & .button{
+                background-color: $Blue;
+                padding: 1em 3.5em;
+                align-self: flex-start;
+                color:#fff;
+                cursor: pointer;
+                -webkit-box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.5);
+                -moz-box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.5);
+                box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.5);
+                @include BorderRadius(40px);   
+                @include TransitionAll(.2s);   
+                backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                position: relative;
+                &:focus{
+                    outline: none;
+                }
+                &:hover, &:focus{
+                    transform: translateY(-3px);
+                    -webkit-transform: translateY(-3px);
+                    -moz-transform: translateY(-3px);
+                    -ms-transform: translateY(-3px);
+                    -o-transform: translateY(-3px);
+                    -webkit-box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.7);
+                    -moz-box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.7);
+                    box-shadow: 0px 3px 12px 1px rgba(79,125,243,0.7);
+                    &::after{
+                        transform: scaleX(1.4) scaleY(1.6);
+                        opacity: 0;
+                    }
+                }
+                &:active{
+                    transform: translateY(1px);
+                    -webkit-transform: translateY(1px);
+                    -moz-transform: translateY(1px);
+                    -ms-transform: translateY(1px);
+                    -o-transform: translateY(1px);
+                }
+                &::after{
+                    position: absolute;
+                    content: '';
+                    display: inline-block;
+                    top:0;
+                    left:0;
+                    background-color: $Blue;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    @include TransitionAll(.3s); 
+                    @include BorderRadius(40px);
+                }
+                & a:visited, a:link{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &__middle{
+        @include FlexCenterCol;
+        margin: 5em 0;
+     & img{
+         width: 65%;
+        }
+    }
+    &__bottom{
+        .icons{
+            @include FlexCenterRow;
+            & .icon{
+                width: 2em;
+                height: 2em;
+                padding: .5em;
+                @include FlexCenterRow;
+                @include BorderRadius(50%);
+                border: 1px solid $Light-Gray;
+                cursor: pointer;
+                text-decoration: none;
+                @include TransitionAll(.2s);
+                &:hover{
+                    border: 1px solid $Blue;
+                }
+                &:link, &:visited{
+                    color:$Blue;
+                }
+            }
+           & .icon:not(:last-child){
+               margin-right: 0.8em;
+           }
+           margin-bottom: 1.5em;
+        }
+
+        & p{
+            font-size: 0.9rem;
+            text-align: center;
+            color: $Gray;
+        }
+        & .attribution {
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+            margin-top: 1em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            color:$Very-Dark-Blue;
+            background-color: #fff;
+        
+            & a{
+                font-weight: $font-weight-bold;
+                &:not(:visited){
+                    color: $Light-Red;
+                }
+                &:visited{
+                    color: $Very-Dark-Blue;
+                }
+            }
+        }
+    }
 }
 
 //MEDIA QUERIES
-@media only screen and (max-width: 1350px) {
-  .container{
-    padding: 5vh 10vw;
-  }
-}
-@media only screen and (max-width: 1150px) {
-  .container{
-    padding: 1vh 5vw;
-  }
-}
-@media only screen and (max-width: 1020px) {
-  .container{
-    grid-template-columns: 40% auto;
-    grid-gap: 3em;
-
-    &__text h1{
-      font-size: 2.4rem;
-    }
-  }
-}
 @media only screen and (max-width: 900px) {
-  .container{
-    padding: 5vh 15vw;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
-    row-gap: 1em;
-    &__form{
-      grid-column: 1 / span 1;
-      grid-row: 2 / span 1;
+    .container__middle{
+        margin: 3.5em 0;
+     & img{
+         width: 90%;
+        }
     }
 
-    &__text{
-      align-items: center;
-      text-align: center;
+    .container__top .form .container__input{
+        width: 60%;
+
+        & label{
+            font-size: 0.7em;
+        }
     }
   }
-}
+@media only screen and (max-width: 715px) {
 
-@media only screen and (max-width: 750px) {
-  .container{
-    padding: 5vh 10vw;
-    
+    .container{
+        margin: 5em 2em;
+    }
+    .container__middle{
+        margin: 3em 0;
+        margin-bottom: 7em;
+     & img{
+         width: 100%;
+        }
+    }
+
+    .container__top .form form {
+        @include FlexCenterCol;
+
+        & .container__input, & .button{
+            width: 100%;
+
+        }
+        & .button{
+            text-align: center;
+            margin-top: 2em;
+        }
+        & input{
+            margin-right:0;
+        }
+
+    }
+
+    .container__top .form .container__input label{
+        margin-left:0;
+        align-self: center;
+        font-size: 0.75rem;
+    }
+    .container .container__top .headings h1{
+        font-size: 2.3rem;
+    }
   }
-}
-@media only screen and (max-width: 650px) {
-  .container{
-    padding: 8vh 10vw;
-    row-gap: 4em;
-    
+
+  @media only screen and (max-width: 475px) {
+    .container .container__top .headings h1{
+        font-size: 1.8rem;
+    }
+    body, input, button, select, textarea{
+        font-size: 0.8rem;
+    }
   }
-  .container__form .form__details{
-    padding: 1em 30%;
-  }
-}
-@media only screen and (max-width: 540px) {
-  .container__form .form__details{
-    padding: 1em 22%;
-  }
-}
